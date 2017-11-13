@@ -54,8 +54,9 @@
  v-on:touchend='touchend'
  monitor='true'
  v-bind:style="'position:fixed;top:'+y+'px;left:'+x+'px'"
+ ref="touchdiv"
  >
-  <gbutton slot="touch">
+  <gbutton slot="touch" id="touch">
     <c slot="btntxt">拖动我试试</c>
   </gbutton>
 </touch>
@@ -71,6 +72,8 @@
       data:{
         x:'',
         y:'',
+        left:'',
+        top:'',
         list:['我是1','我是2']//ActionSheet
       },
       methods: {
@@ -91,14 +94,22 @@
             }
             
           },//ActionSheet
-          touchstart:function(){
+          touchstart:function(x,y){
+            var t=document.getElementById('touch');
+            this.left=x-t.getBoundingClientRect().left;
+            this.top=y-t.getBoundingClientRect().top;
             console.log('我开始拖动了');
           },//touch
           touching:function(x,y){
-            this.x=x;
-            this.y=y;
             
-            console.log(x+"+"+y);
+            
+
+
+            
+            this.x=x-this.left;
+            this.y=y-this.top;
+            
+           
           },
           touchend:function(){
             console.log('我结束拖动了');
