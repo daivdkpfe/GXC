@@ -750,7 +750,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.lager{\r\n  width: 95vw !important;\n}\n.button_div{\r\n    width: 50vw;\r\n    height: 30px;\r\n    text-align: center;   \r\n    border-radius: 6px;\r\n    text-align: center;\r\n    line-height: 30px;\r\n    font-size: 13px;\r\n    color: #ffffff;\r\n    overflow: hidden;\n}\n.small{\r\n  width: 80px;\n}\n.autosize{\r\n  width: auto !important;\r\n  padding: 0 10px;\r\n  display: inline-block;\n}\r\n", ""]);
+exports.push([module.i, "\n.lager{\r\n  width: 95vw !important;\n}\n.button_div{\r\n    width: 50vw;\r\n    height: 30px;\r\n    text-align: center;   \r\n    border-radius: 6px;\r\n    text-align: center;\r\n    line-height: 30px;\r\n    font-size: 13px;\r\n    color: #ffffff;\r\n    overflow: hidden;   \r\n    background: orange;\n}\n.small{\r\n  width: 80px;\n}\n.autosize{\r\n  width: auto !important;\r\n  padding: 0 10px;\r\n  display: inline-block;\n}\r\n", ""]);
 
 // exports
 
@@ -822,6 +822,9 @@ module.exports = function listToStyles (parentId, list) {
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function () {
@@ -829,7 +832,7 @@ module.exports = function listToStyles (parentId, list) {
       color: 'orange'
     };
   },
-  props: ['size', 'btn_color'],
+  props: ['size'],
   mounted: function () {
     if (typeof this.btn_color != 'undefined') {
       this.color = this.btn_color;
@@ -854,8 +857,7 @@ var render = function() {
         lager: _vm.size == "lager",
         small: _vm.size == "small",
         autosize: _vm.size == "auto"
-      },
-      style: "background:" + _vm.color + ";border:1px solid " + _vm.color
+      }
     },
     [
       _vm._t("btntxt", [
@@ -966,7 +968,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.cancel_btn{\r\n    width: 100vw;\r\n    height: 44px;\r\n    border-top: 10px solid rgb(239,239,244);\r\n    line-height: 44px;\r\n    text-align: center;\r\n    font-size: 15px;\r\n    color: #000;\n}\n.menu_ul{\r\n    width: 100vw;\r\n    margin: 0;\r\n    padding:0;\r\n    border: 0;\n}\n.menu_li{\r\n    line-height: 44px;\r\n    list-style: none;\r\n    font-size: 15px;\r\n    text-align: center;\r\n    line-height: 44px;\r\n    color: black;\r\n    border-bottom: 1px solid #EEE;\n}\n.mask{\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background: rgba(0,0,0,0.8);\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1;\n}\n.menu_list{\r\n    width: 100vw;\r\n    background: white;\r\n    position: fixed;\r\n    bottom: 0;\r\n    left: 0;\r\n    z-index: 2;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {\r\n  opacity: 0\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.cancel_btn{\r\n    width: 100vw;\r\n    height: 54px;\r\n    border-top: 10px solid rgb(239,239,244);\r\n    line-height: 44px;\r\n    text-align: center;\r\n    font-size: 15px;\r\n    color: #000;\n}\n.menu_ul{\r\n    width: 100vw;\r\n    margin: 0;\r\n    padding:0;\r\n    border: 0;\n}\n.menu_li{\r\n    line-height: 44px;\r\n    list-style: none;\r\n    font-size: 15px;\r\n    text-align: center;\r\n    line-height: 44px;\r\n    color: black;\r\n    border-bottom: 1px solid #EEE;\n}\n.mask{\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background: rgba(0,0,0,0.8);\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1;\n}\n.menu_list{\r\n    width: 100vw;\r\n    background: white;\r\n    position: fixed;\r\n    bottom: 0;\r\n    left: 0;\r\n    z-index: 2;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {\r\n  opacity: 0\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -976,6 +978,8 @@ exports.push([module.i, "\n.cancel_btn{\r\n    width: 100vw;\r\n    height: 44px
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+//
+//
 //
 //
 //
@@ -1073,22 +1077,24 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "gbutton",
-        {
-          nativeOn: {
-            click: function($event) {
-              _vm.show = !_vm.show
+      _vm._t("value", [
+        _c(
+          "gbutton",
+          {
+            nativeOn: {
+              click: function($event) {
+                _vm.show = !_vm.show
+              }
             }
-          }
-        },
-        [
-          _c("c", { attrs: { slot: "btntxt" }, slot: "btntxt" }, [
-            _vm._v("ActionSheet")
-          ])
-        ],
-        1
-      ),
+          },
+          [
+            _c("c", { attrs: { slot: "btntxt" }, slot: "btntxt" }, [
+              _vm._v("ActionSheet")
+            ])
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade" } }, [
         _vm.show
@@ -1142,7 +1148,7 @@ var render = function() {
           : _vm._e()
       ])
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -1273,6 +1279,7 @@ exports.push([module.i, "\n.touch{\r\n  position: fixed;\n}\r\n", ""]);
   props: ['monitor'],
   methods: {
     start: function () {
+
       this.$emit('touchstart', event.changedTouches["0"].clientX, event.changedTouches["0"].clientY);
     },
     touching: function (event) {

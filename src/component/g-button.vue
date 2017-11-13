@@ -1,9 +1,10 @@
 <template>
-  <div class="button_div" v-bind:class="{lager:size=='lager',small:size=='small',autosize:size=='auto'}" :style="'background:'+color+';border:1px solid '+color">
+  <div class="button_div" v-bind:class="{lager:size=='lager',small:size=='small',autosize:size=='auto'}">
         <slot name="btntxt">{{size}} {{color}} button</slot>
   </div>
 </template>
 <style>
+
 .lager{
   width: 95vw !important;
 }
@@ -17,6 +18,8 @@
     font-size: 13px;
     color: #ffffff;
     overflow: hidden;   
+    background: orange;
+   
 }
 .small{
   width: 80px;
@@ -34,7 +37,7 @@ export default {
       color:'orange'
     }
   },
-  props:['size','btn_color'],
+  props:['size'],
   mounted:function(){
     if(typeof(this.btn_color)!='undefined'){
       this.color=this.btn_color;

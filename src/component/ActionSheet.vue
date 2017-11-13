@@ -1,6 +1,8 @@
 <template>
 <div>
+    <slot name="value">
   <gbutton @click.native="show=!show"><c slot="btntxt">ActionSheet</c></gbutton>
+  </slot>
    <transition name="fade">
   <div class="mask" v-if="show" @click="show=!show">
         <div class="menu_list">
@@ -16,7 +18,7 @@
 <style>
 .cancel_btn{
     width: 100vw;
-    height: 44px;
+    height: 54px;
     border-top: 10px solid rgb(239,239,244);
     line-height: 44px;
     text-align: center;
