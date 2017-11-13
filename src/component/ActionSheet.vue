@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="ActionSheet_div">
     <slot name="value">
   <gbutton @click.native="show=!show"><c slot="btntxt">ActionSheet</c></gbutton>
   </slot>
@@ -16,6 +16,9 @@
 </div>
 </template>
 <style>
+.ActionSheet_div{
+    display:inline-block;
+}
 .cancel_btn{
     width: 100vw;
     height: 54px;

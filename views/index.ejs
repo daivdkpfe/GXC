@@ -8,6 +8,8 @@
   <title>Document</title>
   <script src='vue.js'></script>
   <script src='./djs.js'></script>
+  <link rel="stylesheet" href="gxc.css">
+  <link rel="stylesheet" href="font-awesome.min.css">
 </head>
 <style>
   .button_div{
@@ -19,6 +21,26 @@
   <div class="temp">
 
     <!-- 开始 -->
+    
+<search></search>
+
+
+
+
+<slide>
+<!--   <div slot="slide"></div> -->
+</slide>
+<!--
+  左滑
+  外面一定要套一个overflow: hidden; 和width 100vw 的的div
+
+  留有slide插槽
+  可以自定义左边的内容
+  默认高度70px;
+-->
+
+
+
 
 
     <timeitem t="1699" title="倒计时结束："></timeitem>
@@ -28,6 +50,10 @@
   title="倒计时前面的标题"
 -->
 
+
+
+
+<br>
 
 
     <gbutton size="lager"></gbutton>
@@ -40,6 +66,11 @@
   size:(lager,small,auto,默认中)尺寸
   .btn_div 可以CSS控制颜色
 -->
+
+
+
+<br>
+
 
 <actionsheet v-on:cancel="cancel" :menulist="list" v-on:selected="chosed">
 </actionsheet>
@@ -58,6 +89,9 @@
   第二个值:内容 
 -->
 
+<br>
+
+
 
 <touch
  v-on:touchstart='touchstart'
@@ -65,12 +99,22 @@
  v-on:touchend='touchend'
  monitor='true'
  v-bind:style="'position:fixed;top:'+y+'px;left:'+x+'px'"
- ref="touchdiv"
  >
-  <gbutton slot="touch" id="touch">
+  <gbutton slot="touch" id="touchbtn">
     <c slot="btntxt">拖动我试试</c>
   </gbutton>
 </touch>
+
+<br>
+<!--
+   v-on:touchstart 监听开始拖动触发的函数，返回鼠标x,y
+   v-on:touching 监听拖动中触发的函数，返回鼠标x,y
+   v-on:touchend 监听拖动结束触发的函数，返回鼠标x,y
+   monitor  是否监听  拖动中的事件，默认false
+-->
+
+
+
 
 <!-- 结束 -->
   </div>
@@ -84,13 +128,13 @@
         y:'',
         left:'',
         top:'',
-        list:['我是1','我是2']//ActionSheet
+        list:['我是1','我是2']//ActionSheet列表
       },
       methods: {
         clickActionSheet:function(){
          
           this.$refs.ActionSheet.show=!this.$refs.ActionSheet.show;
-        },
+        },//外部触发ActionSheet
           cancel:function(){
             alert("我点击了取消")
           },//ActionSheet
@@ -107,21 +151,36 @@
             }
             
           },//ActionSheet
+
+
+
+
+
+
           touchstart:function(x,y){
-            var t=document.getElementById('touch');
+            var t=document.getElementById('touchbtn');
+            console.log(t.getBoundingClientRect().left);
+            console.log(t.getBoundingClientRect().top);
+            
             this.left=x-t.getBoundingClientRect().left;
             this.top=y-t.getBoundingClientRect().top;
             console.log('我开始拖动了');
-          },//touch
+            
+          },//touch开始
           touching:function(x,y){
+            
             this.x=x-this.left;
             this.y=y-this.top;
-            
+            console.log(x);
+            console.log(y);
            
-          },
+          },//touch中
           touchend:function(){
             console.log('我结束拖动了');
-          }
+          }//touch结束
+
+
+          
       }
     })
   </script>

@@ -15,7 +15,6 @@ export default {
   props:['monitor'],
   methods:{
     start:function(){
-      
       this.$emit('touchstart',event.changedTouches["0"].clientX,event.changedTouches["0"].clientY);
     },
     touching:function(event){

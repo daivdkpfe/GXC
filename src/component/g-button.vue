@@ -19,6 +19,7 @@
     color: #ffffff;
     overflow: hidden;   
     background: orange;
+    display: inline-block;
    
 }
 .small{
