@@ -1,13 +1,14 @@
 <template>
 <div class="ActionSheet_div">
     <slot name="value">
-  <gbutton @click.native="show=!show"><c slot="btntxt">ActionSheet</c></gbutton>
+  <gbutton @click.native.stopc="show=!show"><c slot="btntxt">ActionSheet</c></gbutton>
+  <!-- 不知道为什么没有.stop就会出来多个遮罩 -->
   </slot>
    <transition name="fade">
-  <div class="mask" v-if="show" @click="show=!show">
+  <div class="mask" v-if="show" @click="show=false">
         <div class="menu_list">
             <ul class="menu_ul">
-                <li v-for="(menu,index) in menulist" class="menu_li" @click="select(index,menu)">{{menu}}</li>
+                <li v-for="(menu,index) in menulist" class="menu_li" @click.stop="select(index,menu)">{{menu}}</li>
             </ul>
             <div class="cancel_btn" @click.stop="hide()">取消</div>
         </div>
@@ -82,7 +83,9 @@ export default {
           this.$emit('cancel');
       },
       select:function(index,val){
-        alert("你点击了第"+index+'的按钮，他的内容是'+val);
+          var t=this;
+        this.show=false;
+        console.log(this.show);
         this.$emit('selected',index,val);
       }
   }

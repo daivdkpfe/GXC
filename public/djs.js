@@ -1063,6 +1063,7 @@ exports.push([module.i, "\n.ActionSheet_div{\r\n    display:inline-block;\n}\n.c
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function () {
@@ -1077,7 +1078,9 @@ exports.push([module.i, "\n.ActionSheet_div{\r\n    display:inline-block;\n}\n.c
             this.$emit('cancel');
         },
         select: function (index, val) {
-            alert("你点击了第" + index + '的按钮，他的内容是' + val);
+            var t = this;
+            this.show = false;
+            console.log(this.show);
             this.$emit('selected', index, val);
         }
     }
@@ -1102,6 +1105,12 @@ var render = function() {
           {
             nativeOn: {
               click: function($event) {
+                if (
+                  !("button" in $event) &&
+                  _vm._k($event.keyCode, "stopc", undefined, $event.key)
+                ) {
+                  return null
+                }
                 _vm.show = !_vm.show
               }
             }
@@ -1123,7 +1132,7 @@ var render = function() {
                 staticClass: "mask",
                 on: {
                   click: function($event) {
-                    _vm.show = !_vm.show
+                    _vm.show = false
                   }
                 }
               },
@@ -1139,6 +1148,7 @@ var render = function() {
                           staticClass: "menu_li",
                           on: {
                             click: function($event) {
+                              $event.stopPropagation()
                               _vm.select(index, menu)
                             }
                           }
@@ -1974,11 +1984,37 @@ function instance(title, value, btn, okcallback, cancelcakkback) {
 
     const component = vueObj.$mount();
     document.body.appendChild(component.$el);
+    //在文档之外渲染并且随后挂载
+    //参考文档https://cn.vuejs.org/v2/api/#vm-mount
 }
 // export default alertshow;
 /* harmony default export */ __webpack_exports__["a"] = (function () {
-    Vue.prototype.$alertshow = function (title, value, btn, okcallback, cancelcakkback) {
-
+    Vue.prototype.$alertshow = function (_alert) {
+        var title = '提示';
+        var value = "我是提示";
+        var btn = ['确定'];
+        var okcallback = function () {};
+        var cancelcakkback = function () {};
+        if (typeof _alert == 'string') {
+            var value = _alert;
+        }
+        if (typeof _alert == 'object') {
+            if (typeof _alert.title != 'undefined') {
+                title = _alert.title;
+            }
+            if (typeof _alert.value != 'undefined') {
+                value = _alert.value;
+            }
+            if (typeof _alert.btn != 'undefined') {
+                btn = _alert.btn;
+            }
+            if (typeof _alert.okcallback != 'undefined') {
+                okcallback = _alert.okcallback;
+            }
+            if (typeof _alert.cancelcakkback != 'undefined') {
+                cancelcakkback = _alert.cancelcakkback;
+            }
+        }
         instance(title, value, btn, okcallback, cancelcakkback);
     };
 });
@@ -1988,8 +2024,8 @@ function instance(title, value, btn, okcallback, cancelcakkback) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_alert_vue__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_075ae727_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_alert_vue__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_alert_vue__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_075ae727_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_alert_vue__ = __webpack_require__(38);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -2073,7 +2109,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.alert_alert_btn_one{\r\n  width: 100%;\r\n  line-height: 44px;\r\n  text-align: center;\r\n  color: #adadad;\n}\n.alert_alert_btn_two{\r\n  width: 50%;\r\n  float: left;\r\n  line-height: 44px;\r\n  text-align: center;\r\n  color: #adadad;\n}\n.alert_alert_button{\r\n  width: 80vw;\r\n  height: 44px;\n}\n.alert_alert_value{\r\n  width: 80vw;\r\n  margin: 0;\r\n  line-height: 23px;\r\n  padding: 15px 0;\r\n  text-align: center;\r\n   border-bottom: 1px solid #EEE;\n}\n.alert_alert_title{\r\n  text-align: center;\r\n  line-height: 70px;\r\n  font-size: 15px;\r\n  height: 70px;\r\n  margin: 0;\r\n  width: 80vw;\n}\n.alert_mask{\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background: rgba(0,0,0,0.8);\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\n}\n.alert_alert_div{\r\n  width: 80vw;\r\n  background: white;\r\n  margin:calc((100vh - 150px)/2 - 50px) auto;\r\n  border-radius:6px;\n}\r\n", ""]);
+exports.push([module.i, "\n.alert_alert_btn_one{\r\n  width: 100%;\r\n  line-height: 44px;\r\n  text-align: center;\r\n  color: #adadad;\n}\n.alert_alert_btn_two{\r\n  width: 50%;\r\n  float: left;\r\n  line-height: 44px;\r\n  text-align: center;\r\n  color: #adadad;\n}\n.alert_alert_button{\r\n  width: 80vw;\r\n  height: 44px;\n}\n.alert_alert_value{\r\n  width: 80vw;\r\n  margin: 0;\r\n  line-height: 23px;\r\n  padding: 15px 0;\r\n  text-align: center;\r\n   border-bottom: 1px solid #EEE;\n}\n.alert_alert_title{\r\n  text-align: center;\r\n  line-height: 70px;\r\n  font-size: 15px;\r\n  height: 70px;\r\n  margin: 0;\r\n  width: 80vw;\n}\n.alert_mask{\r\n  \r\n    width: 100vw;\r\n    height: 100vh;\r\n    background: rgba(0,0,0,0.8);\r\n    position: fixed;\r\n    z-index:2;\r\n    left: 0;\r\n    top: 0;\n}\n.alert_alert_div{\r\n  width: 80vw;\r\n  background: white;\r\n  margin:calc((100vh - 150px)/2 - 50px) auto;\r\n  border-radius:6px;\n}\r\n", ""]);
 
 // exports
 
@@ -2083,87 +2119,8 @@ exports.push([module.i, "\n.alert_alert_btn_one{\r\n  width: 100%;\r\n  line-hei
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm.alert_show
-    ? _c("div", { staticClass: "alert_mask" }, [
-        _c("div", { staticClass: "alert_alert_div" }, [
-          _c("p", { staticClass: "alert_alert_title" }, [
-            _vm._v("\n      " + _vm._s(_vm.title) + "\n    ")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "alert_alert_value" }, [
-            _vm._v("\n       " + _vm._s(_vm.value) + "\n    ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "alert_alert_button" }, [
-            _vm.btn.length == 1
-              ? _c(
-                  "div",
-                  {
-                    staticClass: "alert_alert_btn_one",
-                    on: {
-                      click: function($event) {
-                        _vm.clickok()
-                      }
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.btn[0]))]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.btn.length == 2
-              ? _c(
-                  "div",
-                  {
-                    staticClass: "alert_alert_btn_two",
-                    on: {
-                      click: function($event) {
-                        _vm.clickok()
-                      }
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.btn[0]))]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.btn.length == 2
-              ? _c(
-                  "div",
-                  {
-                    staticClass: "alert_alert_btn_two",
-                    on: {
-                      click: function($event) {
-                        _vm.clickcancel()
-                      }
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.btn[1]))]
-                )
-              : _vm._e()
-          ])
-        ])
-      ])
-    : _vm._e()
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-075ae727", esExports)
-  }
-}
-
-/***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
+//
+//
 //
 //
 //
@@ -2244,6 +2201,90 @@ if (false) {
     }
   }
 });
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.alert_show
+    ? _c("div", { staticClass: "alert_mask" }, [
+        _c("div", { staticClass: "alert_alert_div" }, [
+          _c("p", { staticClass: "alert_alert_title" }, [
+            _vm._v("\n      " + _vm._s(_vm.title) + "\n    ")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "alert_alert_value" }, [
+            _vm._v("\n       " + _vm._s(_vm.value) + "\n    ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "alert_alert_button" }, [
+            _vm.btn.length == 1
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "alert_alert_btn_one",
+                    on: {
+                      click: function($event) {
+                        $event.stopPropagation()
+                        _vm.clickok()
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.btn[0]))]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.btn.length == 2
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "alert_alert_btn_two",
+                    on: {
+                      click: function($event) {
+                        $event.stopPropagation()
+                        _vm.clickok()
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.btn[0]))]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.btn.length == 2
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "alert_alert_btn_two",
+                    on: {
+                      click: function($event) {
+                        $event.stopPropagation()
+                        _vm.clickcancel()
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.btn[1]))]
+                )
+              : _vm._e()
+          ])
+        ])
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-075ae727", esExports)
+  }
+}
 
 /***/ })
 /******/ ]);

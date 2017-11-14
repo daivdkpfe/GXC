@@ -8,9 +8,9 @@
          {{value}}
       </p>
       <div class="alert_alert_button">
-         <div class="alert_alert_btn_one" v-if="btn.length==1"  @click="clickok()">{{btn[0]}}</div>
-        <div class="alert_alert_btn_two" @click="clickok()"  v-if="btn.length==2">{{btn[0]}}</div>
-        <div class="alert_alert_btn_two" @click="clickcancel()" v-if="btn.length==2">{{btn[1]}}</div>
+         <div class="alert_alert_btn_one" v-if="btn.length==1"  @click.stop="clickok()">{{btn[0]}}</div>
+        <div class="alert_alert_btn_two" @click.stop="clickok()"  v-if="btn.length==2">{{btn[0]}}</div>
+        <div class="alert_alert_btn_two" @click.stop="clickcancel()" v-if="btn.length==2">{{btn[1]}}</div>
       </div>
     </div>
   </div>
@@ -50,10 +50,12 @@
   width: 80vw;
 }
 .alert_mask{
+  
     width: 100vw;
     height: 100vh;
     background: rgba(0,0,0,0.8);
     position: fixed;
+    z-index:2;
     left: 0;
     top: 0;
 }

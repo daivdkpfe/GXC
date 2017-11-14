@@ -112,8 +112,13 @@
    v-on:touchend 监听拖动结束触发的函数，返回鼠标x,y
    monitor  是否监听  拖动中的事件，默认false
 -->
-
-
+<br>
+<gbutton @click.native="alert_type1()"><c slot="btntxt">Alert type 1</c></gbutton>
+<gbutton @click.native="alert_type2()"><c slot="btntxt">Alert type 2</c></gbutton>
+<!-- 
+  this.$alertshow('Hi,你看到我了，我是alert') 
+  第一种类型，只传一句话，只有一个确定按钮
+-->
 
 
 <!-- 结束 -->
@@ -136,17 +141,17 @@
           this.$refs.ActionSheet.show=!this.$refs.ActionSheet.show;
         },//外部触发ActionSheet
           cancel:function(){
-            alert("我点击了取消")
+            this.$alertshow("我点击了取消")
           },//ActionSheet
           chosed:function(index,val){
             /* index：索引
             val:内容 */
             switch(index){
               case 0:
-              alert('我选择了第'+parseInt(index+1)+'个按钮，触发了回调事件');
+              this.$alertshow('我选择了第'+parseInt(index+1)+'个按钮，触发了回调事件');
               break;
               case 1:
-              alert('我选择了第'+parseInt(index+1)+'个按钮，触发了回调事件');              
+              this.$alertshow('我选择了第'+parseInt(index+1)+'个按钮，触发了回调事件');              
               break;
             }
             
@@ -179,18 +184,27 @@
             console.log('我结束拖动了');
           }//touch结束
           ,
-          clickok:function(){
-            this.sss();
-        }
+          alert_type1:function(){
+              this.$alertshow(
+            {title:'警告',
+            value:'你太帅了',
+            btn:['确定','取消'],
+            ok:function(index){
+            console.log(index);
+            },
+            cancel:function(index){
+            console.log(index);
+            }
+            });
+          },
+          alert_type2:function(){
+            this.$alertshow('Hi,你看到我了，我是alert')
+          }
 
           
       },mounted:function(){
         /* this.$aaa(); */
-        this.$alertshow('警告','你太帅了',['确定','取消'],function(index){
-          alert(index);
-        },function(index){
-          alert(index)
-        });
+        
       }
     })
   </script>
