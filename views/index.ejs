@@ -178,9 +178,19 @@
           touchend:function(){
             console.log('我结束拖动了');
           }//touch结束
-
+          ,
+          clickok:function(){
+            this.sss();
+        }
 
           
+      },mounted:function(){
+        /* this.$aaa(); */
+        this.$alertshow('警告','你太帅了',['确定','取消'],function(index){
+          alert(index);
+        },function(index){
+          alert(index)
+        });
       }
     })
   </script>

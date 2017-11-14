@@ -6,6 +6,7 @@ import actionsheet from './component/ActionSheet.vue'
 import touch from './component/touch.vue'
 import slide from './component/content.vue'
 import search from './component/search.vue'
+import alert from './component/alert'
 
 var gxc={
     timeitem,//倒计时
@@ -19,4 +20,11 @@ export function install(Vue) {
     for(let i in gxc){
         Vue.component(i, gxc[i]);
     }
+    
+    
+    Vue.prototype.$bbb= {
+        c:'333',
+        d:'4445'
+    }
+    Vue.use(alert);
 }

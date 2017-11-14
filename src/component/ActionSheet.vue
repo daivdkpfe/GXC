@@ -84,7 +84,6 @@ export default {
       select:function(index,val){
         alert("你点击了第"+index+'的按钮，他的内容是'+val);
         this.$emit('selected',index,val);
-    
       }
   }
 }
