@@ -1607,10 +1607,12 @@ exports.push([module.i, "\n.slide{\r\n    height: 70px;\r\n    float: left;\n}\n
             if (x - this.x > 20) {
 
                 this.istouch = false;
-            } else if (x - this.x < 20) {
+            } else if (this.x - x > 20) {
 
                 this.istouch = true;
             }
+            console.log(x);
+            console.log(this.x);
             console.log('我结束拖动了');
         }
     }
