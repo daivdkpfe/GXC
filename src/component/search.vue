@@ -29,9 +29,10 @@ text-indent: 10px;
   float: left;
   position: relative;
     left: -10px;
- visible:none;
+ 
   border: none;
-  color: #454545;
+  color: #454545 !important;
+  background: red;
   opacity:0;
   overflow: hidden;
   background: rgba(0,0,0,0) !important;
@@ -39,7 +40,7 @@ text-indent: 10px;
 -moz-transition: all 0.5s;	/* Firefox 4 */
 -webkit-transition: all 0.5s;	/* Safari 和 Chrome */
 -o-transition: all 0.5s;
-
+visible:none;
 }
 .show{
   visibility: visible;
