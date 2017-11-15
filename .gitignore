@@ -3,7 +3,7 @@ node_modules/
 dist/                                                   
 npm-debug.log
 yarn-error.log
-./public/djs.js
+public/djs.js
 # Editor directories and files
 .idea
 *.suo
