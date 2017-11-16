@@ -51,7 +51,7 @@
     background: rgba(0,0,0,0.8);
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 501;
 }
 .menu_list{
     width: 100vw;
@@ -59,7 +59,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: 2;
+    z-index: 502;
 }
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s
@@ -85,7 +85,6 @@ export default {
       select:function(index,val){
           var t=this;
         this.show=false;
-        console.log(this.show);
         this.$emit('selected',index,val);
       }
   }

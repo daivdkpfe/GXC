@@ -2,7 +2,7 @@
 
   <div class="search_div">
     <div class="input_div" :class="{isbtn:isbtn}">
-      <Icon type="search" size="20"></Icon>
+      <i class="fa fa-search" aria-hidden="true"></i>
       <input type="text" placeholder="请输入..." class="search_input" @focus="isbtn=true" :class="{isbtn_input:isbtn}" @blur="isbtn=false">
       
     </div>
@@ -63,7 +63,7 @@ visible:none;
 .input_div{
   height: 30px;
   float: left;
-  width: 355px;
+  width:calc(100vw - 20px);
   border-radius: 6px;
   background: #efeff4;
   margin: 7px 10px;
@@ -73,7 +73,7 @@ visible:none;
 -o-transition: width 0.5s;
 }
 .search_input{
-  width: 315px;
+  width:calc(100vw - 60px);
   border: none;
   height: 30px;
   float: left;
@@ -85,10 +85,18 @@ visible:none;
 -o-transition: width 0.5s;
 }
 .isbtn_input{
-  width: 265px;
+  width:calc(100vw - 90px);
 }
 .isbtn{
-  width: 305px;
+  width:calc(100vw - 70px);
+}
+.search_div i{
+  float: left;
+    width: 15px;
+    margin-left: 5px;
+    height: 15px;
+    /* margin: 5px 5px; */
+    margin-top: 7.5px;
 }
 </style>
 <script>

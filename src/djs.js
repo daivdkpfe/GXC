@@ -6,7 +6,8 @@ import actionsheet from './component/ActionSheet.vue'
 import touch from './component/touch.vue'
 import slide from './component/content.vue'
 import search from './component/search.vue'
-import alert from './component/alert'
+import alert from './component/alert/alert'
+import Toast from './component/Toast/Toast'
 
 var gxc={
     timeitem,//倒计时
@@ -14,7 +15,7 @@ var gxc={
     actionsheet,//底部栏
     touch,//可拖动状态
     slide,//联系人左滑删除
-    search,//搜索栏
+    search,//搜索栏,
 }
 export function install(Vue) {
     for(let i in gxc){
@@ -26,5 +27,6 @@ export function install(Vue) {
         c:'333',
         d:'4445'
     }
-    Vue.use(alert);
+    Vue.use(alert);//Alert提示栏
+    Vue.use(Toast);//Toast提示栏
 }

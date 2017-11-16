@@ -1,4 +1,5 @@
 <template>
+ <transition name="fade">
   <div class="alert_mask" v-if="alert_show">
     <div class="alert_alert_div">
       <p class="alert_alert_title">
@@ -14,6 +15,7 @@
       </div>
     </div>
   </div>
+ </transition>
 </template>
 <style>
 .alert_alert_btn_one{
@@ -50,12 +52,11 @@
   width: 80vw;
 }
 .alert_mask{
-  
     width: 100vw;
     height: 100vh;
     background: rgba(0,0,0,0.8);
     position: fixed;
-    z-index:2;
+    z-index:503;
     left: 0;
     top: 0;
 }
@@ -64,6 +65,12 @@
   background: white;
   margin:calc((100vh - 150px)/2 - 50px) auto;
   border-radius:6px; 
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+  opacity: 0
 }
 </style>
 <script>

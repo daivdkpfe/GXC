@@ -115,10 +115,12 @@
 <br>
 <gbutton @click.native="alert_type1()"><c slot="btntxt">Alert type 1</c></gbutton>
 <gbutton @click.native="alert_type2()"><c slot="btntxt">Alert type 2</c></gbutton>
-<!-- 
-  this.$alertshow('Hi,你看到我了，我是alert') 
-  第一种类型，只传一句话，只有一个确定按钮
--->
+<!-- 提示 -->
+
+<gbutton @click.native="Toast1()">
+  <c slot="btntxt">Toast</c>
+</gbutton>
+
 
 
 <!-- 结束 -->
@@ -196,9 +198,27 @@
             console.log(index);
             }
             });
+            /* this.$alertshow('Hi,你看到我了，我是alert') 
+            第一种类型，
+            title：标题
+            value：内容
+            btn：按钮
+            ok：点击确定的方法
+            cancel：点击取消的方法
+             */
           },
           alert_type2:function(){
-            this.$alertshow('Hi,你看到我了，我是alert')
+            this.$alertshow('Hi,你看到我了，我是alert');
+            
+            /* this.$alertshow('Hi,你看到我了，我是alert') 
+            第二种类型，只传一句话，只有一个确定按钮 */
+
+          },
+          Toast1:function(){
+            this.$Toast('你帅死了','loading');
+           /*  Toast(value,type)
+            value:可以为空,但一定要赋值
+            type:目前提供success,error,loading */
           }
 
           
