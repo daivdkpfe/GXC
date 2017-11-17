@@ -8,6 +8,10 @@ import slide from './component/content.vue'
 import search from './component/search.vue'
 import alert from './component/alert/alert'
 import Toast from './component/Toast/Toast'
+import grow from './component/Flex/Row.vue'
+import gcol from './component/Flex/Col.vue'
+
+
 
 var gxc={
     timeitem,//倒计时
@@ -16,6 +20,8 @@ var gxc={
     touch,//可拖动状态
     slide,//联系人左滑删除
     search,//搜索栏,
+    grow,//柵格化行
+    gcol,//柵格化列
 }
 export function install(Vue) {
     for(let i in gxc){
