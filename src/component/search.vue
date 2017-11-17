@@ -28,7 +28,7 @@ text-indent: 10px;
   margin-top: 7px;
   float: left;
   position: relative;
-    left: -10px;
+    left: -10px; 
      white-space: nowrap;
   border: none;
   color: #454545 !important;
