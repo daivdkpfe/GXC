@@ -20,12 +20,13 @@
 <body>
   <div class="temp">
 
+    
     <!-- 开始 -->
     
+<top title="GXC" v-on:left="TopLeft" v-on:right="TopRight"></top>
+
 <search></search>
-
-
-
+<!-- 搜索栏 -->
 
 <slide>
 <!--   <div slot="slide"></div> -->
@@ -130,17 +131,16 @@
 
 
 <gRow>
-  <gCol><p>ss</p></gCol>
-  <gCol span='5'><p>ssf</p></gCol>
-  <gCol span='5'><p>ssf</p></gCol>
-  <gCol span='5'><p>ssf</p></gCol>
-  <gCol span='5'><p>ssf</p></gCol>
-  <gCol span='5'><p>ssf</p></gCol>
+  <gCol><p style="width:100%;background:red;color:white;text-align:center;">1</p></gCol>
+  <gCol span='5'><p style="width:100%;background:rgb(255, 251, 0);color:white;text-align:center;">2</p></gCol>
+  <gCol span='5'><p style="width:100%;background:rgb(101, 248, 3);color:white;text-align:center;">3</p></gCol>
+  <gCol span='5'><p style="width:100%;background:rgb(0, 81, 255);color:white;text-align:center;">4</p></gCol>
+  <gCol span='5'><p style="width:100%;background:rgb(217, 3, 236);color:white;text-align:center;">5</p></gCol>
 </gRow>
 
 <gRow>
-  <gCol>1</gCol>
-  <gCol>2</gCol>
+  <gCol><p style="width:100%;background:rgb(217, 3, 236);color:white;text-align:center;">1</p></gCol>
+  <gCol><p style="width:100%;background:rgb(255, 251, 0);color:white;text-align:center;">2</p></gCol>
 </gRow>
 
 
@@ -241,6 +241,12 @@
            /*  Toast(value,type)
             value:可以为空,但一定要赋值
             type:目前提供success,error,loading */
+          },
+          TopLeft:function(){
+            alert("left");
+          },
+          TopRight:function(){
+            alert("right");
           }
 
           

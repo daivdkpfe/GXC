@@ -10,7 +10,7 @@ import alert from './component/alert/alert'
 import Toast from './component/Toast/Toast'
 import grow from './component/Flex/Row.vue'
 import gcol from './component/Flex/Col.vue'
-
+import top from './component/header.vue'
 
 
 var gxc={
@@ -22,6 +22,7 @@ var gxc={
     search,//搜索栏,
     grow,//柵格化行
     gcol,//柵格化列
+    top,//顶部栏
 }
 export function install(Vue) {
     for(let i in gxc){
