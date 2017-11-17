@@ -29,7 +29,7 @@ text-indent: 10px;
   float: left;
   position: relative;
     left: -10px;
- 
+     white-space: nowrap;
   border: none;
   color: #454545 !important;
   background: red;
@@ -76,6 +76,7 @@ visible:none;
   width:calc(100vw - 60px);
   border: none;
   height: 30px;
+
   float: left;
   background:none;
   text-indent: 10px;
