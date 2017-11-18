@@ -3102,7 +3102,8 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c27d63f2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_InfiniteScroll_vue__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_InfiniteScroll_vue__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c27d63f2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_InfiniteScroll_vue__ = __webpack_require__(63);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -3110,7 +3111,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+
 /* template */
 
 /* template functional */
@@ -3122,8 +3123,8 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __vue_script__,
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c27d63f2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_InfiniteScroll_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_InfiniteScroll_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c27d63f2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_InfiniteScroll_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -3186,7 +3187,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.infinite_div {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    background: red;\n    top: 0;\n    left: 0;\n}\n", ""]);
+exports.push([module.i, "\n.infinite_div .value_div{\r\n    z-index: 499;\n}\n.infinite_div {\r\n        width: 100%;\r\n        height: 100%;\r\n        position: absolute;\r\n        background: red;\r\n        top: 0;\r\n        left: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -3202,8 +3203,32 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "infinite_div" },
-    [_c("touch", [_vm._t("default")], 2)],
+    {
+      staticClass: "infinite_div",
+      style: "top:" + _vm.top + "px;left:" + _vm.left + "px"
+    },
+    [
+      _c(
+        "touch",
+        {
+          staticClass: "value_div",
+          attrs: { monitor: "true" },
+          on: {
+            touchstart: _vm.infinite_touch_start,
+            touching: _vm.infinite_touching,
+            touchend: _vm.infinite_touch_end
+          }
+        },
+        [
+          _c(
+            "div",
+            { attrs: { slot: "touch" }, slot: "touch" },
+            [_vm._t("default")],
+            2
+          )
+        ]
+      )
+    ],
     1
   )
 }
@@ -3217,6 +3242,88 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-c27d63f2", esExports)
   }
 }
+
+/***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: function () {
+        return {
+            top: 0,
+            left: 0,
+            x: 0,
+            y: 0,
+            infinite_scroll: false, //是否允许滚动
+            maxscroll: 200, //允许的最大拖动
+            effect: 100 //最低的生效
+        };
+    },
+    methods: {
+        infinite_touch_start: function (x, y) {
+            //开始拖动，先看看是不是在顶部了
+
+            if (this.y == 0) {
+                this.infinite_scroll = true;
+                this.x = x;
+                this.y = y;
+            }
+        },
+        infinite_touching: function (x, y) {
+            //拖动中，先看看允许拖动
+            //在vue里面设置一个最大的拖动值吧，方便配置
+            if (this.infinite_scroll) {
+                var scrolling_top = y - this.y;
+                if (scrolling_top <= this.maxscroll) {
+                    this.top = y - this.y;
+                }
+            }
+        },
+        infinite_touch_end: function (x, y) {
+            if (y - this.y > this.effect) {
+                //当超过有效值的时候，执行函数，反之不执行
+                alert('我生肖了');
+                this.top = 0;
+                this.x = 0;
+            } else {
+                this.top = 0;
+                this.x = 0;
+            }
+        }
+
+    }
+});
 
 /***/ })
 /******/ ]);
