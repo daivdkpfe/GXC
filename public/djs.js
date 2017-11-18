@@ -591,74 +591,68 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+
+// 将传入的数字转成两位数,如果传入的字符串非法则返回空字符串
+function formatNumber(number) {
+  var _number = parseInt(number);
+  if (isNaN(_number)) {
+    return "";
+  }
+
+  return _number < 10 ? "0" + _number : _number;
+}
+
+// 将数字转化为要显示的文本，如果是00就不显示
+function transToDisplayText(number, isAddColon = true) {
+  // console.log(number);
+  var text = formatNumber(number);
+  var after = isAddColon ? ":" : "";
+  return "00" == text ? "" : text + after;
+}
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+  name: "timeitem",
+  props: ["t", "title"],
+  data: function () {
+    var that = this;
+    return {
+      counter: that.t
+    };
+  },
+  computed: {
 
-    data: function () {
-        return {
-            counter: this.t,
-            txt: ''
-        };
+    day: function () {
+      return transToDisplayText(this.counter / 3600 / 24);
     },
-    mounted: function () {
 
-        var th = this;
-        if (th.counter > 0) {
-            var d = parseInt(this.counter / 3600 / 24);
-            if (d < 10) {
-                d = "0" + d;
-            }
-            var h = parseInt(this.counter % (3600 * 24) / 3600);
-            if (h < 10) {
-                h = "0" + h;
-            }
-            var m = parseInt(this.counter % (3600 * 24) % 3600 / 60);
-            if (m < 10) {
-                m = "0" + m;
-            }
-            var s = parseInt(this.counter % (3600 * 24) % 60);
-            if (s < 10) {
-                s = "0" + s;
-            }
-            var a = d == "00" ? "" : '<span>' + d + ' </span>:';
-            var b = h == "00" ? "" : '<span>' + h + ' </span>:';
-            var c = m == "00" ? "" : '<span>' + m + ' </span>:';
-            var d = s == "00" ? "" : '<span>' + s + ' </span>';
-            th.txt = th.title + a + b + c + d;
-            this.counter = this.counter - 1;
-        } else {
-            th.txt = '';
-            return;
-        }
-
-        setInterval(function () {
-            if (th.counter > 0) {
-                var d = parseInt(th.counter / 3600 / 24);
-                if (d < 10) {
-                    d = "0" + d;
-                }
-                var h = parseInt(th.counter % (3600 * 24) / 3600);
-                if (h < 10) {
-                    h = "0" + h;
-                }
-                var m = parseInt(th.counter % (3600 * 24) % 3600 / 60);
-                if (m < 10) {
-                    m = "0" + m;
-                }
-                var s = parseInt(th.counter % (3600 * 24) % 60);
-                if (s < 10) {
-                    s = "0" + s;
-                }
-                var a = d == "00" ? "" : '<span>' + d + ' </span>:';
-                var b = h == "00" ? "" : '<span>' + h + ' </span>:';
-                var c = m == "00" ? "" : '<span>' + m + ' </span>:';
-                var d = s == "00" ? "" : '<span>' + s + ' </span>';
-                th.txt = th.title + (a + b + c + d);
-                th.counter = th.counter - 1;
-            } else {}
-        }, 1000);
+    hour: function () {
+      return transToDisplayText(this.counter % (3600 * 24) / 3600);
     },
-    props: ['t', 'title']
+
+    minute: function () {
+      return transToDisplayText(this.counter % (3600 * 24) % 3600 / 60);
+    },
+
+    second: function () {
+      return transToDisplayText(this.counter % (3600 * 24) % 60, false);
+    }
+  },
+  mounted: function () {
+    var that = this;
+
+    if (this.counter < 1) {
+      return;
+    }
+
+    setInterval(function () {
+      if (0 < that.counter) {
+        that.counter = that.counter - 1;
+      }
+    }, 1000);
+  }
 });
 
 /***/ }),
@@ -670,10 +664,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", {
-    staticClass: "fl right_txt sl1 time",
-    domProps: { innerHTML: _vm._s(_vm.txt) }
-  })
+  return _c("p", { staticClass: "fl right_txt sl1 time" }, [
+    _vm._v(
+      _vm._s(_vm.title) +
+        _vm._s(_vm.day) +
+        " " +
+        _vm._s(_vm.hour) +
+        " " +
+        _vm._s(_vm.minute) +
+        " " +
+        _vm._s(_vm.second)
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
