@@ -7,7 +7,7 @@
 </template>
 <style>
 .touch{
-  position: fixed; 
+  position: absolute; 
 }
 </style>
 <script>

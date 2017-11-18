@@ -5,252 +5,267 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="target-densitydpi=device-dpi, width=375px, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>GXC</title>
   <script src='vue.js'></script>
   <script src='./djs.js'></script>
   <link rel="stylesheet" href="gxc.css">
   <link rel="stylesheet" href="font-awesome.min.css">
 </head>
 <style>
-  .button_div{
+  .button_div {
     margin-top: 10px;
   }
-
 </style>
+
 <body>
   <div class="temp">
+    <infinite>
 
-    
-    <!-- 开始 -->
-    
-<top title="GXC" v-on:left="TopLeft" v-on:right="TopRight"></top>
+      <!-- 开始 -->
 
-<search></search>
-<!-- 搜索栏 -->
+      <top title="GXC" v-on:left="TopLeft" v-on:right="TopRight"></top>
 
-<slide>
-<!--   <div slot="slide"></div> -->
-</slide>
-<!--
-  左滑
-  外面一定要套一个overflow: hidden; 和width 100vw 的的div
+      <search></search>
+      <!-- 搜索栏 -->
 
-  留有slide插槽
-  可以自定义左边的内容
-  默认高度70px;
--->
+      <slide>
+        <!--   <div slot="slide"></div> -->
+      </slide>
+      <!--
+          左滑
+          外面一定要套一个overflow: hidden; 和width 100vw 的的div
 
-
-
-
-
-    <timeitem t="1699" title="倒计时结束："></timeitem>
-    <!-- 
-  倒计时
-  t="倒计时多少秒"
-  title="倒计时前面的标题"
--->
-
-
-
-
-<br>
-
-
-    <gbutton size="lager"></gbutton>
-    <gbutton btn_color="red"></gbutton>
-    <gbutton btn_color="red" size='auto'></gbutton>    
-    <gbutton size="small" btn_color="blue"></gbutton>
-<!--
-  按钮组件
-  有btntxt插槽,用c标签，带入内容
-  size:(lager,small,auto,默认中)尺寸
-  .btn_div 可以CSS控制颜色
--->
-
-
-
-<br>
-
-
-<actionsheet v-on:cancel="cancel" :menulist="list" v-on:selected="chosed">
-</actionsheet>
-
-
-
-
-    <actionsheet v-on:cancel="cancel" :menulist="list" v-on:selected="chosed" @click.native="clickActionSheet" ref="ActionSheet">
-      <gbutton  slot="value"><c slot="btntxt" ref="gbutton">ActionSheetS</c></gbutton>
-    </actionsheet>
-<!-- 
-  :menulist:传入一个数组，按键列表
-  第一步先V-on 监听事件，cancel 监听取消的事件，在这里面触发methods事件，等号后面写事件名
-  selected 监听 选中事件，在这里面触发methods事件，等号后面写事件名，返回两个值，
-  第一个值：索引
-  第二个值:内容 
--->
+          留有slide插槽
+          可以自定义左边的内容
+          默认高度70px;
+        -->
 
 
 
 
 
-
-<br>
-
-
-
-<touch
- v-on:touchstart='touchstart'
- v-on:touching='touching'
- v-on:touchend='touchend'
- monitor='true'
- v-bind:style="'position:fixed;top:'+y+'px;left:'+x+'px'"
- >
-  <gbutton slot="touch" id="touchbtn">
-    <c slot="btntxt">拖动我试试</c>
-  </gbutton>
-</touch>
-
-<br>
-<!--
-   v-on:touchstart 监听开始拖动触发的函数，返回鼠标x,y
-   v-on:touching 监听拖动中触发的函数，返回鼠标x,y
-   v-on:touchend 监听拖动结束触发的函数，返回鼠标x,y
-   monitor  是否监听  拖动中的事件，默认false
--->
-<br>
-<gbutton @click.native="alert_type1()"><c slot="btntxt">Alert type 1</c></gbutton>
-<gbutton @click.native="alert_type2()"><c slot="btntxt">Alert type 2</c></gbutton>
-<!-- 提示 -->
-
-<gbutton @click.native="Toast1()">
-  <c slot="btntxt">Toast</c>
-</gbutton>
-
-<!-- Tosat,說明在事件里面 -->
-
-
-<gRow>
-  <gCol><p style="width:100%;background:red;color:white;text-align:center;">1</p></gCol>
-  <gCol span='5'><p style="width:100%;background:rgb(255, 251, 0);color:white;text-align:center;">2</p></gCol>
-  <gCol span='5'><p style="width:100%;background:rgb(101, 248, 3);color:white;text-align:center;">3</p></gCol>
-  <gCol span='5'><p style="width:100%;background:rgb(0, 81, 255);color:white;text-align:center;">4</p></gCol>
-  <gCol span='5'><p style="width:100%;background:rgb(217, 3, 236);color:white;text-align:center;">5</p></gCol>
-</gRow>
-
-<gRow>
-  <gCol><p style="width:100%;background:rgb(217, 3, 236);color:white;text-align:center;">1</p></gCol>
-  <gCol><p style="width:100%;background:rgb(255, 251, 0);color:white;text-align:center;">2</p></gCol>
-</gRow>
+      <timeitem t="1699" title="倒计时结束："></timeitem>
+      <!-- 
+          倒计时
+          t="倒计时多少秒"
+          title="倒计时前面的标题"
+        -->
 
 
 
-<!-- 结束 -->
+
+      <br>
+
+
+      <gbutton size="lager"></gbutton>
+      <gbutton btn_color="red"></gbutton>
+      <gbutton btn_color="red" size='auto'></gbutton>
+      <gbutton size="small" btn_color="blue"></gbutton>
+      <!--
+          按钮组件
+          有btntxt插槽,用c标签，带入内容
+          size:(lager,small,auto,默认中)尺寸
+          .btn_div 可以CSS控制颜色
+        -->
+
+
+
+      <br>
+
+
+      <actionsheet v-on:cancel="cancel" :menulist="list" v-on:selected="chosed">
+      </actionsheet>
+
+
+
+
+      <actionsheet v-on:cancel="cancel" :menulist="list" v-on:selected="chosed" @click.native="clickActionSheet" ref="ActionSheet">
+        <gbutton slot="value">
+          <c slot="btntxt" ref="gbutton">ActionSheetS</c>
+        </gbutton>
+      </actionsheet>
+      <!-- 
+          :menulist:传入一个数组，按键列表
+          第一步先V-on 监听事件，cancel 监听取消的事件，在这里面触发methods事件，等号后面写事件名
+          selected 监听 选中事件，在这里面触发methods事件，等号后面写事件名，返回两个值，
+          第一个值：索引
+          第二个值:内容 
+        -->
+
+
+
+
+
+
+      <br>
+
+
+
+      <touch v-on:touchstart='touchstart' v-on:touching='touching' v-on:touchend='touchend' monitor='true' v-bind:style="'position:fixed;top:'+y+'px;left:'+x+'px'">
+        <gbutton slot="touch" id="touchbtn">
+          <c slot="btntxt">拖动我试试</c>
+        </gbutton>
+      </touch>
+
+      <br>
+      <!--
+          v-on:touchstart 监听开始拖动触发的函数，返回鼠标x,y
+          v-on:touching 监听拖动中触发的函数，返回鼠标x,y
+          v-on:touchend 监听拖动结束触发的函数，返回鼠标x,y
+          monitor  是否监听  拖动中的事件，默认false
+        -->
+      <br>
+      <gbutton @click.native="alert_type1()">
+        <c slot="btntxt">Alert type 1</c>
+      </gbutton>
+      <gbutton @click.native="alert_type2()">
+        <c slot="btntxt">Alert type 2</c>
+      </gbutton>
+      <!-- 提示 -->
+
+      <gbutton @click.native="Toast1()">
+        <c slot="btntxt">Toast</c>
+      </gbutton>
+
+      <!-- Tosat,說明在事件里面 -->
+
+
+      <gRow>
+        <gCol>
+          <p style="width:100%;background:red;color:white;text-align:center;">1</p>
+        </gCol>
+        <gCol span='5'>
+          <p style="width:100%;background:rgb(255, 251, 0);color:white;text-align:center;">2</p>
+        </gCol>
+        <gCol span='5'>
+          <p style="width:100%;background:rgb(101, 248, 3);color:white;text-align:center;">3</p>
+        </gCol>
+        <gCol span='5'>
+          <p style="width:100%;background:rgb(0, 81, 255);color:white;text-align:center;">4</p>
+        </gCol>
+        <gCol span='5'>
+          <p style="width:100%;background:rgb(217, 3, 236);color:white;text-align:center;">5</p>
+        </gCol>
+      </gRow>
+
+      <gRow>
+        <gCol>
+          <p style="width:100%;background:rgb(217, 3, 236);color:white;text-align:center;">1</p>
+        </gCol>
+        <gCol>
+          <p style="width:100%;background:rgb(255, 251, 0);color:white;text-align:center;">2</p>
+        </gCol>
+      </gRow>
+    </infinite>
+
+
+    <!-- 结束 -->
   </div>
 
   <script>
     Vue.use(gxc)
     var xx = new Vue({
       el: '.temp',
-      data:{
-        x:'',
-        y:'',
-        left:'',
-        top:'',
-        list:['我是1','我是2']//ActionSheet列表
+      data: {
+        x: '',
+        y: '',
+        left: '',
+        top: '',
+        list: ['我是1', '我是2'] //ActionSheet列表
       },
       methods: {
-        clickActionSheet:function(){
-         
-          this.$refs.ActionSheet.show=!this.$refs.ActionSheet.show;
-        },//外部触发ActionSheet
-          cancel:function(){
-            this.$alertshow("我点击了取消")
-          },//ActionSheet
-          chosed:function(index,val){
-            /* index：索引
-            val:内容 */
-            switch(index){
-              case 0:
-              this.$alertshow('我选择了第'+parseInt(index+1)+'个按钮，触发了回调事件');
+        clickActionSheet: function () {
+
+          this.$refs.ActionSheet.show = !this.$refs.ActionSheet.show;
+        }, //外部触发ActionSheet
+        cancel: function () {
+          this.$alertshow("我点击了取消")
+        }, //ActionSheet
+        chosed: function (index, val) {
+          /* index：索引
+          val:内容 */
+          switch (index) {
+            case 0:
+              this.$alertshow('我选择了第' + parseInt(index + 1) + '个按钮，触发了回调事件');
               break;
-              case 1:
-              this.$alertshow('我选择了第'+parseInt(index+1)+'个按钮，触发了回调事件');              
+            case 1:
+              this.$alertshow('我选择了第' + parseInt(index + 1) + '个按钮，触发了回调事件');
               break;
-            }
-            
-          },//ActionSheet
-
-
-
-
-
-
-          touchstart:function(x,y){
-            var t=document.getElementById('touchbtn');
-            console.log(t.getBoundingClientRect().left);
-            console.log(t.getBoundingClientRect().top);
-            
-            this.left=x-t.getBoundingClientRect().left;
-            this.top=y-t.getBoundingClientRect().top;
-            console.log('我开始拖动了');
-            
-          },//touch开始
-          touching:function(x,y){
-            
-            this.x=x-this.left;
-            this.y=y-this.top;
-            console.log(x);
-            console.log(y);
-           
-          },//touch中
-          touchend:function(){
-            console.log('我结束拖动了');
-          }//touch结束
-          ,
-          alert_type1:function(){
-              this.$alertshow(
-            {title:'警告',
-            value:'你太帅了',
-            btn:['确定','取消'],
-            ok:function(index){
-            console.log(index);
-            },
-            cancel:function(index){
-            console.log(index);
-            }
-            });
-            /* this.$alertshow('Hi,你看到我了，我是alert') 
-            第一种类型，
-            title：标题
-            value：内容
-            btn：按钮
-            ok：点击确定的方法
-            cancel：点击取消的方法
-             */
-          },
-          alert_type2:function(){
-            this.$alertshow('Hi,你看到我了，我是alert');
-            
-            /* this.$alertshow('Hi,你看到我了，我是alert') 
-            第二种类型，只传一句话，只有一个确定按钮 */
-
-          },
-          Toast1:function(){
-            this.$Toast('你帅死了','loading');
-           /*  Toast(value,type)
-            value:可以为空,但一定要赋值
-            type:目前提供success,error,loading */
-          },
-          TopLeft:function(){
-            alert("left");
-          },
-          TopRight:function(){
-            alert("right");
           }
 
-          
-      },mounted:function(){
+        }, //ActionSheet
+
+
+
+
+
+
+        touchstart: function (x, y) {
+          var t = document.getElementById('touchbtn');
+          console.log(t.getBoundingClientRect().left);
+          console.log(t.getBoundingClientRect().top);
+
+          this.left = x - t.getBoundingClientRect().left;
+          this.top = y - t.getBoundingClientRect().top;
+          console.log('我开始拖动了');
+
+        }, //touch开始
+        touching: function (x, y) {
+
+          this.x = x - this.left;
+          this.y = y - this.top;
+          console.log(x);
+          console.log(y);
+
+        }, //touch中
+        touchend: function () {
+            console.log('我结束拖动了');
+          } //touch结束
+          ,
+        alert_type1: function () {
+          this.$alertshow({
+            title: '警告',
+            value: '你太帅了',
+            btn: ['确定', '取消'],
+            ok: function (index) {
+              console.log(index);
+            },
+            cancel: function (index) {
+              console.log(index);
+            }
+          });
+          /* this.$alertshow('Hi,你看到我了，我是alert') 
+          第一种类型，
+          title：标题
+          value：内容
+          btn：按钮
+          ok：点击确定的方法
+          cancel：点击取消的方法
+           */
+        },
+        alert_type2: function () {
+          this.$alertshow('Hi,你看到我了，我是alert');
+
+          /* this.$alertshow('Hi,你看到我了，我是alert') 
+          第二种类型，只传一句话，只有一个确定按钮 */
+
+        },
+        Toast1: function () {
+          this.$Toast('你帅死了', 'loading');
+          /*  Toast(value,type)
+           value:可以为空,但一定要赋值
+           type:目前提供success,error,loading */
+        },
+        TopLeft: function () {
+          alert("left");
+        },
+        TopRight: function () {
+          alert("right");
+        }
+
+
+      },
+      mounted: function () {
         /* this.$aaa(); */
       }
     })

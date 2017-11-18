@@ -11,7 +11,7 @@ import Toast from './component/Toast/Toast'
 import grow from './component/Flex/Row.vue'
 import gcol from './component/Flex/Col.vue'
 import top from './component/header.vue'
-
+import infinite from './component/InfiniteScroll/InfiniteScroll.vue'
 
 var gxc={
     timeitem,//倒计时
@@ -23,6 +23,7 @@ var gxc={
     grow,//柵格化行
     gcol,//柵格化列
     top,//顶部栏
+    infinite,//下拉刷新
 }
 export function install(Vue) {
     for(let i in gxc){
