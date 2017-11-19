@@ -40,6 +40,7 @@ to {transform: rotate(360deg);}
     background: rgba(0,0,0,0.8);
     position: fixed;
     top: 50vh;
+    z-index: 510;
     left: 50vw;
     word-wrap: all;
     word-wrap:break-word;

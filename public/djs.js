@@ -495,7 +495,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__component_Flex_Col_vue__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__component_header_vue__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__component_InfiniteScroll_InfiniteScroll_vue__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__component_InfiniteScroll_Load_vue__ = __webpack_require__(65);
 /* 倒计时 */
+
 
 
 
@@ -520,7 +522,8 @@ var gxc = {
     grow: __WEBPACK_IMPORTED_MODULE_8__component_Flex_Row_vue__["a" /* default */], //柵格化行
     gcol: __WEBPACK_IMPORTED_MODULE_9__component_Flex_Col_vue__["a" /* default */], //柵格化列
     top: __WEBPACK_IMPORTED_MODULE_10__component_header_vue__["a" /* default */], //顶部栏
-    infinite: __WEBPACK_IMPORTED_MODULE_11__component_InfiniteScroll_InfiniteScroll_vue__["a" /* default */] //下拉刷新
+    infinite: __WEBPACK_IMPORTED_MODULE_11__component_InfiniteScroll_InfiniteScroll_vue__["a" /* default */], //下拉刷新
+    load: __WEBPACK_IMPORTED_MODULE_12__component_InfiniteScroll_Load_vue__["a" /* default */] //加载中
 };
 function install(Vue) {
     for (let i in gxc) {
@@ -2442,7 +2445,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {\r\n  opacity: 0\n}\n.toast .load{\r\n    animation: load 1.5s;\r\n    animation-iteration-count:infinite;\r\n    animation-timing-function: linear;\n}\n@keyframes load\r\n{\nfrom {transform: rotate(0deg);\n}\nto {transform: rotate(360deg);\n}\n}\n.toast i{\r\n    font-size: 20px;\r\n    font-size: 30px;\r\n    margin-bottom: 10px;\n}\n.toast{\r\n    border-radius: 6px;\r\n    line-height: 20px;\r\n    font-size: 15px;\r\n    color: white;\r\n    padding:15px 10px;\r\n    text-align: center;\r\n    background: rgba(0,0,0,0.8);\r\n    position: fixed;\r\n    top: 50vh;\r\n    left: 50vw;\r\n    word-wrap: all;\r\n    word-wrap:break-word;\r\n    transform: translateX(-50%) translateY(-50%);\r\n    /* 偏移50% */\n}\r\n", ""]);
+exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {\r\n  opacity: 0\n}\n.toast .load{\r\n    animation: load 1.5s;\r\n    animation-iteration-count:infinite;\r\n    animation-timing-function: linear;\n}\n@keyframes load\r\n{\nfrom {transform: rotate(0deg);\n}\nto {transform: rotate(360deg);\n}\n}\n.toast i{\r\n    font-size: 20px;\r\n    font-size: 30px;\r\n    margin-bottom: 10px;\n}\n.toast{\r\n    border-radius: 6px;\r\n    line-height: 20px;\r\n    font-size: 15px;\r\n    color: white;\r\n    padding:15px 10px;\r\n    text-align: center;\r\n    background: rgba(0,0,0,0.8);\r\n    position: fixed;\r\n    top: 50vh;\r\n    z-index: 510;\r\n    left: 50vw;\r\n    word-wrap: all;\r\n    word-wrap:break-word;\r\n    transform: translateX(-50%) translateY(-50%);\r\n    /* 偏移50% */\n}\r\n", ""]);
 
 // exports
 
@@ -2452,6 +2455,7 @@ exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\r\n  transit
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+//
 //
 //
 //
@@ -3104,8 +3108,8 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_InfiniteScroll_vue__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c27d63f2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_InfiniteScroll_vue__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_InfiniteScroll_vue__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c27d63f2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_InfiniteScroll_vue__ = __webpack_require__(64);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -3189,7 +3193,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.infinite_div .value_div{\r\n    z-index: 499;\n}\n.infinite_div {\r\n        width: 100%;\r\n        height: 100%;\r\n        position: absolute;\r\n        background: red;\r\n        top: 0;\r\n        left: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.infinite_div .value_div {\n    z-index: 499;\n}\n.infinite_div {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.dh{\n        -webkit-transition: all 0.5s;\n        -moz-transition: all 0.5s;\n        transition: all 0.5s;\n}\n", ""]);
 
 // exports
 
@@ -3199,57 +3203,14 @@ exports.push([module.i, "\n.infinite_div .value_div{\r\n    z-index: 499;\n}\n.i
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "infinite_div",
-      style: "top:" + _vm.top + "px;left:" + _vm.left + "px"
-    },
-    [
-      _c(
-        "touch",
-        {
-          staticClass: "value_div",
-          attrs: { monitor: "true" },
-          on: {
-            touchstart: _vm.infinite_touch_start,
-            touching: _vm.infinite_touching,
-            touchend: _vm.infinite_touch_end
-          }
-        },
-        [
-          _c(
-            "div",
-            { attrs: { slot: "touch" }, slot: "touch" },
-            [_vm._t("default")],
-            2
-          )
-        ]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-c27d63f2", esExports)
-  }
-}
-
-/***/ }),
-/* 64 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3288,43 +3249,309 @@ if (false) {
             x: 0,
             y: 0,
             infinite_scroll: false, //是否允许滚动
-            maxscroll: 200, //允许的最大拖动
-            effect: 100 //最低的生效
+            maxscroll: 100, //允许的最大拖动
+            effect: 50, //最低的生效
+            IsEffect: false,
+            dh: false
         };
     },
     methods: {
         infinite_touch_start: function (x, y) {
             //开始拖动，先看看是不是在顶部了
-
+            this.dh = false;
             if (this.y == 0) {
                 this.infinite_scroll = true;
                 this.x = x;
                 this.y = y;
             }
+            /* console.log('start:' + y); */
         },
         infinite_touching: function (x, y) {
             //拖动中，先看看允许拖动
             //在vue里面设置一个最大的拖动值吧，方便配置
             if (this.infinite_scroll) {
                 var scrolling_top = y - this.y;
+                if (scrolling_top <= 0) return;
                 if (scrolling_top <= this.maxscroll) {
                     this.top = y - this.y;
+
+                    if (this.effect < y - this.y) {
+                        this.IsEffect = true;
+                    } else {
+                        this.IsEffect = false;
+                    }
+                } else {
+                    this.top = this.maxscroll;
                 }
             }
         },
         infinite_touch_end: function (x, y) {
+            this.dh = true;
             if (y - this.y > this.effect) {
                 //当超过有效值的时候，执行函数，反之不执行
-                alert('我生肖了');
+                this.$Toast('我生肖了');
                 this.top = 0;
-                this.x = 0;
+                this.y = 0;
+                this.infinite_scroll = false;
             } else {
                 this.top = 0;
-                this.x = 0;
+                this.y = 0;
+                this.infinite_scroll = false;
             }
         }
 
     }
+});
+
+/***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "Infinite-mask" },
+    [
+      _c("load", { attrs: { IsEffect: _vm.IsEffect, IsShow: _vm.top > 0 } }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "infinite_div",
+          class: { dh: _vm.dh },
+          style: "top:" + _vm.top + "px;left:" + _vm.left + "px"
+        },
+        [
+          _c(
+            "touch",
+            {
+              staticClass: "value_div",
+              attrs: { monitor: "true" },
+              on: {
+                touchstart: _vm.infinite_touch_start,
+                touching: _vm.infinite_touching,
+                touchend: _vm.infinite_touch_end
+              }
+            },
+            [
+              _c(
+                "div",
+                { attrs: { slot: "touch" }, slot: "touch" },
+                [_vm._t("default")],
+                2
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c27d63f2", esExports)
+  }
+}
+
+/***/ }),
+/* 65 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Load_vue__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8394a828_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Load_vue__ = __webpack_require__(66);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(67)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Load_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8394a828_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Load_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\component\\InfiniteScroll\\Load.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8394a828", Component.options)
+  } else {
+    hotAPI.reload("data-v-8394a828", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.IsShow,
+          expression: "IsShow"
+        }
+      ],
+      staticClass: "Load_div"
+    },
+    [
+      _c("p", { staticClass: "load-txt" }, [
+        _c("i", {
+          staticClass: "fa fa-arrow-down",
+          class: { IsEffect: _vm.IsEffect },
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("\n        " + _vm._s(_vm.IsEffect ? "释放刷新" : "下拉刷新") + "\n    ")
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8394a828", esExports)
+  }
+}
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(68);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("425ffb59", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8394a828\",\"scoped\":false,\"hasInlineConfig\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Load.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8394a828\",\"scoped\":false,\"hasInlineConfig\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Load.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.Load_div .load-txt {\n    font-size: 20px;\n    line-height: 50px;\n    height: 50px;\n    text-align: center;\n}\n.Load_div {\n    height: 200px;\n}\n.Load_div .fa-arrow-down {\n\n    transition: all 0.5s;\n    -ms-transition: all 0.5s;\n    -webkit-transition: all 0.5s;\n    -o-transition: all 0.5s;\n    -moz-transition: all 0.5s;\n}\n.Load_div .IsEffect {\n    transform: rotate(180deg);\n    -ms-transform: rotate(180deg);\n    /* IE 9 */\n    -webkit-transform: rotate(180deg);\n    /* Safari and Chrome */\n    -o-transform: rotate(180deg);\n    /* Opera */\n    -moz-transform: rotate(180deg);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    props: ['IsEffect', 'IsShow']
 });
 
 /***/ })

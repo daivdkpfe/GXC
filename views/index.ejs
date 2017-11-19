@@ -20,7 +20,6 @@
 <body>
   <div class="temp">
     <infinite>
-
       <!-- 开始 -->
 
       <top title="GXC" v-on:left="TopLeft" v-on:right="TopRight"></top>
@@ -58,8 +57,11 @@
 
 
       <gbutton size="lager"></gbutton>
+      <br>
       <gbutton btn_color="red"></gbutton>
+      <br>
       <gbutton btn_color="red" size='auto'></gbutton>
+      <br>
       <gbutton size="small" btn_color="blue"></gbutton>
       <!--
           按钮组件
@@ -77,7 +79,7 @@
       </actionsheet>
 
 
-
+      <br>
 
       <actionsheet v-on:cancel="cancel" :menulist="list" v-on:selected="chosed" @click.native="clickActionSheet" ref="ActionSheet">
         <gbutton slot="value">
@@ -91,7 +93,7 @@
           第一个值：索引
           第二个值:内容 
         -->
-
+        
 
 
 
@@ -118,18 +120,19 @@
       <gbutton @click.native="alert_type1()">
         <c slot="btntxt">Alert type 1</c>
       </gbutton>
+      <br>
       <gbutton @click.native="alert_type2()">
         <c slot="btntxt">Alert type 2</c>
       </gbutton>
       <!-- 提示 -->
-
+      <br>
       <gbutton @click.native="Toast1()">
         <c slot="btntxt">Toast</c>
       </gbutton>
 
       <!-- Tosat,說明在事件里面 -->
 
-
+      <br>
       <gRow>
         <gCol>
           <p style="width:100%;background:red;color:white;text-align:center;">1</p>

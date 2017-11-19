@@ -12,6 +12,8 @@ import grow from './component/Flex/Row.vue'
 import gcol from './component/Flex/Col.vue'
 import top from './component/header.vue'
 import infinite from './component/InfiniteScroll/InfiniteScroll.vue'
+import load from './component/InfiniteScroll/Load.vue'
+
 
 var gxc={
     timeitem,//倒计时
@@ -24,6 +26,7 @@ var gxc={
     gcol,//柵格化列
     top,//顶部栏
     infinite,//下拉刷新
+    load,//加载中
 }
 export function install(Vue) {
     for(let i in gxc){
