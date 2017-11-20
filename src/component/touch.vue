@@ -12,19 +12,31 @@
 </style>
 <script>
 export default {
-  props:['monitor'],
+  props:['monitor','prevent'],
   methods:{
     start:function(){
       this.$emit('touchstart',event.changedTouches["0"].clientX,event.changedTouches["0"].clientY);
+      if(this.prevent)
+      {
+        event.stopPropagation();
+      }
     },
     touching:function(event){
       if(this.monitor)
       {
       this.$emit('touching',event.changedTouches["0"].clientX,event.changedTouches["0"].clientY)
       }
+      if(this.prevent)
+      {
+        event.stopPropagation();
+      }
     },
     end:function(){
       this.$emit('touchend',event.changedTouches["0"].clientX,event.changedTouches["0"].clientY);
+      if(this.prevent)
+      {
+        event.stopPropagation();
+      }
     }
   }
 }

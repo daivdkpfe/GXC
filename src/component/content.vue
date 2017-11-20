@@ -1,5 +1,5 @@
 <template>
-    <touch v-on:touchstart='touchstart' v-on:touching='touching' v-on:touchend='touchend' monitor='true' class="relative slide" ref="touchdiv" >
+    <touch v-on:touchstart='touchstart' v-on:touching='touching' v-on:touchend='touchend' monitor='true' prevent="true" class="relative slide" ref="touchdiv" >
         <div class="content_div" slot="touch"  id="touch" v-bind:class="{istouch:istouch}">
                 <div class="touch_btn" >
                     删除
@@ -140,7 +140,7 @@
         methods: {
             touchstart: function (x, y) {
                 this.x = x;
-                console.log('我开始拖动了');
+                
             }, //touch
             touching: function (x, y) {
             },
@@ -152,9 +152,7 @@
                     
                     this.istouch = true;
                 }
-                  console.log(x);
-                    console.log(this.x);
-                console.log('我结束拖动了');
+               
             }
         }
     }

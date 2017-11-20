@@ -1324,18 +1324,27 @@ exports.push([module.i, "\n.touch{\r\n  position: absolute;\n}\r\n", ""]);
 //
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  props: ['monitor'],
+  props: ['monitor', 'prevent'],
   methods: {
     start: function () {
       this.$emit('touchstart', event.changedTouches["0"].clientX, event.changedTouches["0"].clientY);
+      if (this.prevent) {
+        event.stopPropagation();
+      }
     },
     touching: function (event) {
       if (this.monitor) {
         this.$emit('touching', event.changedTouches["0"].clientX, event.changedTouches["0"].clientY);
       }
+      if (this.prevent) {
+        event.stopPropagation();
+      }
     },
     end: function () {
       this.$emit('touchend', event.changedTouches["0"].clientX, event.changedTouches["0"].clientY);
+      if (this.prevent) {
+        event.stopPropagation();
+      }
     }
   }
 });
@@ -1619,7 +1628,6 @@ exports.push([module.i, "\n.slide{\r\n    height: 70px;\r\n    float: left;\n}\n
     methods: {
         touchstart: function (x, y) {
             this.x = x;
-            console.log('我开始拖动了');
         }, //touch
         touching: function (x, y) {},
         touchend: function (x, y) {
@@ -1630,9 +1638,6 @@ exports.push([module.i, "\n.slide{\r\n    height: 70px;\r\n    float: left;\n}\n
 
                 this.istouch = true;
             }
-            console.log(x);
-            console.log(this.x);
-            console.log('我结束拖动了');
         }
     }
 });
@@ -1651,7 +1656,7 @@ var render = function() {
     {
       ref: "touchdiv",
       staticClass: "relative slide",
-      attrs: { monitor: "true" },
+      attrs: { monitor: "true", prevent: "true" },
       on: {
         touchstart: _vm.touchstart,
         touching: _vm.touching,
@@ -3369,12 +3374,12 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Load_vue__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8394a828_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Load_vue__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Load_vue__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8394a828_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Load_vue__ = __webpack_require__(69);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(67)
+  __webpack_require__(66)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -3421,57 +3426,12 @@ if (false) {(function () {
 
 /***/ }),
 /* 66 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.IsShow,
-          expression: "IsShow"
-        }
-      ],
-      staticClass: "Load_div"
-    },
-    [
-      _c("p", { staticClass: "load-txt" }, [
-        _c("i", {
-          staticClass: "fa fa-arrow-down",
-          class: { IsEffect: _vm.IsEffect },
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v("\n        " + _vm._s(_vm.IsEffect ? "释放刷新" : "下拉刷新") + "\n    ")
-      ])
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8394a828", esExports)
-  }
-}
-
-/***/ }),
-/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(68);
+var content = __webpack_require__(67);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -3491,7 +3451,7 @@ if(false) {
 }
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -3505,7 +3465,7 @@ exports.push([module.i, "\n.Load_div .load-txt {\n    font-size: 20px;\n    line
 
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3553,6 +3513,51 @@ exports.push([module.i, "\n.Load_div .load-txt {\n    font-size: 20px;\n    line
 /* harmony default export */ __webpack_exports__["a"] = ({
     props: ['IsEffect', 'IsShow']
 });
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.IsShow,
+          expression: "IsShow"
+        }
+      ],
+      staticClass: "Load_div"
+    },
+    [
+      _c("p", { staticClass: "load-txt" }, [
+        _c("i", {
+          staticClass: "fa fa-arrow-down",
+          class: { IsEffect: _vm.IsEffect },
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("\n        " + _vm._s(_vm.IsEffect ? "释放刷新" : "下拉刷新") + "\n    ")
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8394a828", esExports)
+  }
+}
 
 /***/ })
 /******/ ]);
