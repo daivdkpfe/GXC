@@ -25,7 +25,7 @@
         position: relative;
     }
     .header_div{
-        width: 355px;
+        width: 95%;
         margin: 0 auto;
     }
     .header_div img{

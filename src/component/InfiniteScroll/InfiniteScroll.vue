@@ -4,7 +4,7 @@
         <div class="infinite_div" v-bind:style="'top:'+top+'px;left:'+left+'px'" v-bind:class="{dh:dh}">
             <touch class="value_div" v-on:touchstart="infinite_touch_start" v-on:touching="infinite_touching" v-on:touchend="infinite_touch_end"
                 monitor='true'>
-                <div slot="touch">
+                <div class="slot_div" slot="touch">
                     <slot></slot>
                 </div>
             </touch>
@@ -21,11 +21,15 @@
     .infinite_div .value_div {
         z-index: 499;
     }
-
+    .Infinite-mask{
+        height: 100vh;
+        width: 100vw;
+    }
     .infinite_div {
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         position: absolute;
+        overflow-x: hidden;
         top: 0;
         left: 0;
         }
@@ -33,6 +37,14 @@
             -webkit-transition: all 0.5s;
             -moz-transition: all 0.5s;
             transition: all 0.5s;
+        }
+        .infinite_div .value_div{
+             height: 100vh;
+        width: 100vw;
+        }
+        .infinite_div .slot_div{
+        height: 100vh;
+        width: 100vw;
         }
 </style>
 <script>
@@ -66,7 +78,7 @@
                 //在vue里面设置一个最大的拖动值吧，方便配置
                 if (this.infinite_scroll) {
                     var scrolling_top = y - this.y;
-                    if(scrolling_top<=0) return;
+                    
                     if (scrolling_top <= this.maxscroll) {
                         this.top = y - this.y;
 

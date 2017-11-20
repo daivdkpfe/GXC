@@ -1,5 +1,5 @@
 <template>
-  <div class="touch"  @touchstart="start" v-on:touchmove.prevent="touching" @touchend="end">
+  <div class="touch"  @touchstart="start" v-on:touchmove.prevent.stop="touching" @touchend="end">
       <slot name='touch'>
            
       </slot>
@@ -12,7 +12,7 @@
 </style>
 <script>
 export default {
-  props:['monitor','prevent'],
+  props:['monitor'],
   methods:{
     start:function(){
       this.$emit('touchstart',event.changedTouches["0"].clientX,event.changedTouches["0"].clientY);

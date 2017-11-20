@@ -1003,7 +1003,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.ActionSheet_div{\r\n    display:inline-block;\n}\n.cancel_btn{\r\n    width: 100vw;\r\n    height: 54px;\r\n    border-top: 10px solid rgb(239,239,244);\r\n    line-height: 44px;\r\n    text-align: center;\r\n    font-size: 15px;\r\n    color: #000;\n}\n.menu_ul{\r\n    width: 100vw;\r\n    margin: 0;\r\n    padding:0;\r\n    border: 0;\n}\n.menu_li{\r\n    line-height: 44px;\r\n    list-style: none;\r\n    font-size: 15px;\r\n    text-align: center;\r\n    line-height: 44px;\r\n    color: black;\r\n    border-bottom: 1px solid #EEE;\n}\n.mask{\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background: rgba(0,0,0,0.8);\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 501;\n}\n.menu_list{\r\n    width: 100vw;\r\n    background: white;\r\n    position: fixed;\r\n    bottom: 0;\r\n    left: 0;\r\n    z-index: 502;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {\r\n  opacity: 0\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.ActionSheet_div{\r\n    display:inline-block;\n}\n.cancel_btn{\r\n    width: 100vw;\r\n    height: 54px;\r\n    border-top: 10px solid rgb(239,239,244);\r\n    line-height: 44px;\r\n    text-align: center;\r\n    font-size: 15px;\r\n    color: #000;\n}\n.menu_ul{\r\n    width: 100vw;\r\n    margin: 0;\r\n    padding:0;\r\n    border: 0;\n}\n.menu_li{\r\n    line-height: 44px;\r\n    list-style: none;\r\n    font-size: 15px;\r\n    text-align: center;\r\n    line-height: 44px;\r\n    color: black;\r\n    border-bottom: 1px solid #EEE;\n}\n.mask{\r\n    position: fixed;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background: rgba(0,0,0,0.8);\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 501;\n}\n.menu_list{\r\n    width: 100vw;\r\n    background: white;\r\n    position: fixed;\r\n    bottom: 0;\r\n    left: 0;\r\n    z-index: 502;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {\r\n  opacity: 0\n}\nbody{\r\n    overflow-y: hidden;\n}\r\n", ""]);
 
 // exports
 
@@ -1013,6 +1013,8 @@ exports.push([module.i, "\n.ActionSheet_div{\r\n    display:inline-block;\n}\n.c
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+//
+//
 //
 //
 //
@@ -1324,7 +1326,7 @@ exports.push([module.i, "\n.touch{\r\n  position: absolute;\n}\r\n", ""]);
 //
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  props: ['monitor', 'prevent'],
+  props: ['monitor'],
   methods: {
     start: function () {
       this.$emit('touchstart', event.changedTouches["0"].clientX, event.changedTouches["0"].clientY);
@@ -1366,6 +1368,7 @@ var render = function() {
         touchstart: _vm.start,
         touchmove: function($event) {
           $event.preventDefault()
+          $event.stopPropagation()
           _vm.touching($event)
         },
         touchend: _vm.end
@@ -2977,7 +2980,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.header{\n    box-shadow: 0px 10px 125px rgba(0,0,0,0.1);\n    width: 100vw;\n    background: white;\n    position: relative;\n}\n.header_div{\n    width: 355px;\n    margin: 0 auto;\n}\n.header_div img{\n    width: 20px;\n    height:20px;\n    margin-top: 12px;\n}\n.header_div p{\n    font-size: 18px;\n    color: #181818;\n    line-height: 44px;\n    text-align: center;\n}\n.header_div i{\n    font-size: 30px;\n    margin-top: 7px;\n}\n.header_div .fa-ellipsis-h{\n    font-size: 22px;\n    margin-top:11px;\n}\n", ""]);
+exports.push([module.i, "\n.header{\n    box-shadow: 0px 10px 125px rgba(0,0,0,0.1);\n    width: 100vw;\n    background: white;\n    position: relative;\n}\n.header_div{\n    width: 95%;\n    margin: 0 auto;\n}\n.header_div img{\n    width: 20px;\n    height:20px;\n    margin-top: 12px;\n}\n.header_div p{\n    font-size: 18px;\n    color: #181818;\n    line-height: 44px;\n    text-align: center;\n}\n.header_div i{\n    font-size: 30px;\n    margin-top: 7px;\n}\n.header_div .fa-ellipsis-h{\n    font-size: 22px;\n    margin-top:11px;\n}\n", ""]);
 
 // exports
 
@@ -3198,7 +3201,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.infinite_div .value_div {\n    z-index: 499;\n}\n.infinite_div {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.dh{\n        -webkit-transition: all 0.5s;\n        -moz-transition: all 0.5s;\n        transition: all 0.5s;\n}\n", ""]);
+exports.push([module.i, "\n.infinite_div .value_div {\n    z-index: 499;\n}\n.Infinite-mask{\n    height: 100vh;\n    width: 100vw;\n}\n.infinite_div {\n    width: 100vw;\n    height: 100vh;\n    position: absolute;\n    overflow-x: hidden;\n    top: 0;\n    left: 0;\n}\n.dh{\n        -webkit-transition: all 0.5s;\n        -moz-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.infinite_div .value_div{\n         height: 100vh;\n    width: 100vw;\n}\n.infinite_div .slot_div{\n    height: 100vh;\n    width: 100vw;\n}\n", ""]);
 
 // exports
 
@@ -3208,6 +3211,18 @@ exports.push([module.i, "\n.infinite_div .value_div {\n    z-index: 499;\n}\n.in
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3276,7 +3291,7 @@ exports.push([module.i, "\n.infinite_div .value_div {\n    z-index: 499;\n}\n.in
             //在vue里面设置一个最大的拖动值吧，方便配置
             if (this.infinite_scroll) {
                 var scrolling_top = y - this.y;
-                if (scrolling_top <= 0) return;
+
                 if (scrolling_top <= this.maxscroll) {
                     this.top = y - this.y;
 
@@ -3345,7 +3360,11 @@ var render = function() {
             [
               _c(
                 "div",
-                { attrs: { slot: "touch" }, slot: "touch" },
+                {
+                  staticClass: "slot_div",
+                  attrs: { slot: "touch" },
+                  slot: "touch"
+                },
                 [_vm._t("default")],
                 2
               )

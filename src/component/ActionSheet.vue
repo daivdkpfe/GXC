@@ -67,7 +67,9 @@
 .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
   opacity: 0
 }
-
+body{
+    overflow-y: hidden;
+}
 </style>
 <script>
 export default {
