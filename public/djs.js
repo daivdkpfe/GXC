@@ -3201,7 +3201,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.infinite_div .value_div {\n    z-index: 499;\n}\n.Infinite-mask{\n    height: 100vh;\n    width: 100vw;\n}\n.infinite_div {\n    width: 100vw;\n    height: 100vh;\n    position: absolute;\n    overflow-x: hidden;\n    top: 0;\n    left: 0;\n}\n.dh{\n        -webkit-transition: all 0.5s;\n        -moz-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.infinite_div .value_div{\n         height: 100vh;\n    width: 100vw;\n}\n.infinite_div .slot_div{\n    height: 100vh;\n    width: 100vw;\n}\n", ""]);
+exports.push([module.i, "\n.infinite_div .value_div {\n    z-index: 499;\n}\n.Infinite-mask {\n    height: 100vh;\n    width: 100vw;\n}\n.infinite_div {\n    width: 100vw;\n    height: 100vh;\n    position: absolute;\n    overflow-x: hidden;\n    top: 0;\n    left: 0;\n}\n.dh {\n    -webkit-transition: all 0.5s;\n    -moz-transition: all 0.5s;\n    transition: all 0.5s;\n}\n.infinite_div .value_div {\n    height: 100vh;\n    width: 100vw;\n}\n.infinite_div .slot_div {\n    height: 100vh;\n    width: 100vw;\n}\n", ""]);
 
 // exports
 
@@ -3260,6 +3260,11 @@ exports.push([module.i, "\n.infinite_div .value_div {\n    z-index: 499;\n}\n.In
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function () {
@@ -3269,10 +3274,11 @@ exports.push([module.i, "\n.infinite_div .value_div {\n    z-index: 499;\n}\n.In
             x: 0,
             y: 0,
             infinite_scroll: false, //是否允许滚动
-            maxscroll: 100, //允许的最大拖动
-            effect: 50, //最低的生效
+            maxscroll: 200, //允许的最大拖动
+            effect: 100, //最低的生效
             IsEffect: false,
-            dh: false
+            dh: false,
+            loading: false
         };
     },
     methods: {
@@ -3307,17 +3313,26 @@ exports.push([module.i, "\n.infinite_div .value_div {\n    z-index: 499;\n}\n.In
         },
         infinite_touch_end: function (x, y) {
             this.dh = true;
-            if (y - this.y > this.effect) {
-                //当超过有效值的时候，执行函数，反之不执行
-                this.$Toast('我生肖了');
-                this.top = 0;
-                this.y = 0;
-                this.infinite_scroll = false;
-            } else {
-                this.top = 0;
-                this.y = 0;
-                this.infinite_scroll = false;
+            if (this.infinite_scroll) {
+                if (y - this.y > this.effect) {
+                    //当超过有效值的时候，执行函数，反之不执行
+                    this.$Toast('我生肖了');
+                    this.top = 50; //转转转的，留50像素好了，就不会再触发了
+                    this.y = 50; //转转转的，留50像素好了，然后不要回顶部，就不会再触发了
+                    this.infinite_scroll = false;
+                    this.loading = true;
+                    this.$emit('loading');
+                } else {
+                    this.top = 0;
+                    this.y = 0;
+                    this.infinite_scroll = false;
+                }
             }
+        },
+        infinite_reset: function () {
+            this.loading = false;
+            this.top = 0;
+            this.y = 0;
         }
 
     }
@@ -3336,7 +3351,13 @@ var render = function() {
     "div",
     { staticClass: "Infinite-mask" },
     [
-      _c("load", { attrs: { IsEffect: _vm.IsEffect, IsShow: _vm.top > 0 } }),
+      _c("load", {
+        attrs: {
+          IsEffect: _vm.IsEffect,
+          IsShow: _vm.top > 0,
+          loading: _vm.loading
+        }
+      }),
       _vm._v(" "),
       _c(
         "div",
@@ -3478,7 +3499,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.Load_div .load-txt {\n    font-size: 20px;\n    line-height: 50px;\n    height: 50px;\n    text-align: center;\n}\n.Load_div {\n    height: 200px;\n}\n.Load_div .fa-arrow-down {\n\n    transition: all 0.5s;\n    -ms-transition: all 0.5s;\n    -webkit-transition: all 0.5s;\n    -o-transition: all 0.5s;\n    -moz-transition: all 0.5s;\n}\n.Load_div .IsEffect {\n    transform: rotate(180deg);\n    -ms-transform: rotate(180deg);\n    /* IE 9 */\n    -webkit-transform: rotate(180deg);\n    /* Safari and Chrome */\n    -o-transform: rotate(180deg);\n    /* Opera */\n    -moz-transform: rotate(180deg);\n}\n", ""]);
+exports.push([module.i, "\n.Load_div .load-txt {\n        font-size: 20px;\n        line-height: 100px;\n        height: 100px;\n        text-align: center;\n}\n.Load_div .loading-txt {\n        font-size: 20px;\n        line-height: 50px;\n        height: 50px;\n        text-align: center;\n}\n.Load_div {\n        height: 200px;\n}\n.Load_div .fa-arrow-down {\n\n        transition: all 0.5s;\n        -ms-transition: all 0.5s;\n        -webkit-transition: all 0.5s;\n        -o-transition: all 0.5s;\n        -moz-transition: all 0.5s;\n}\n.Load_div .fa-circle-o-notch {\n        animation: loading 2s;\n-moz-animation: loading 2s;\t/* Firefox */\n-webkit-animation: loading 2s;\t/* Safari 和 Chrome */\n-o-animation: loading 2s;\t/* Opera */\nanimation-timing-function: linear;\nanimation-iteration-count: infinite;\n}\n@keyframes loading {\nfrom {\n            transform: rotate(0deg);\n}\nto {\n            transform: rotate(360deg);\n}\n}\n.Load_div .IsEffect {\n        transform: rotate(180deg);\n        -ms-transform: rotate(180deg);\n        /* IE 9 */\n        -webkit-transform: rotate(180deg);\n        /* Safari and Chrome */\n        -o-transform: rotate(180deg);\n        /* Opera */\n        -moz-transform: rotate(180deg);\n}\n", ""]);
 
 // exports
 
@@ -3528,9 +3549,43 @@ exports.push([module.i, "\n.Load_div .load-txt {\n    font-size: 20px;\n    line
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    props: ['IsEffect', 'IsShow']
+    props: ['IsEffect', 'IsShow', 'loading']
 });
 
 /***/ }),
@@ -3556,14 +3611,52 @@ var render = function() {
       staticClass: "Load_div"
     },
     [
-      _c("p", { staticClass: "load-txt" }, [
-        _c("i", {
-          staticClass: "fa fa-arrow-down",
-          class: { IsEffect: _vm.IsEffect },
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v("\n        " + _vm._s(_vm.IsEffect ? "释放刷新" : "下拉刷新") + "\n    ")
-      ])
+      _c(
+        "p",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.loading,
+              expression: "!loading"
+            }
+          ],
+          staticClass: "load-txt"
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-arrow-down",
+            class: { IsEffect: _vm.IsEffect },
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(
+            "\n        " + _vm._s(_vm.IsEffect ? "释放刷新" : "下拉刷新") + "\n    "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.loading,
+              expression: "loading"
+            }
+          ],
+          staticClass: "loading-txt"
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-circle-o-notch",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v("\n        加载中...\n    ")
+        ]
+      )
     ]
   )
 }

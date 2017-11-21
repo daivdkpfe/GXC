@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-
+<!--     <meta name="viewport" content="target-densitydpi=device-dpi, width=375px, user-scalable=no"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GXC</title>
     <script src='vue.js'></script>
@@ -19,7 +19,7 @@
 
 <body>
     <div class="temp">
-        <infinite>
+        <infinite @loading="loading" ref="infinite">
             <!-- 开始 -->
 
             <top title="GXC" v-on:left="TopLeft" v-on:right="TopRight"></top>
@@ -180,12 +180,6 @@
                     }
 
                 }, //ActionSheet
-
-
-
-
-
-
                 touchstart: function(x, y) {
                     var t = document.getElementById('touchbtn');
                     console.log(t.getBoundingClientRect().left);
@@ -247,12 +241,16 @@
                 },
                 TopRight: function() {
                     alert("right");
+                },
+                loading:function(){
+                    setTimeout(() => {
+                        this.$refs.infinite.infinite_reset();                           
+                    }, 2000);
                 }
 
 
             },
             mounted: function() {
-                /* this.$aaa(); */
             }
         })
     </script>
