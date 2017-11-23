@@ -39,7 +39,9 @@
           可以自定义左边的内容
           默认高度70px;
         -->
-
+            <navbar :menulist="navbar_menu">
+                <div slot="Navbar_page_1">ssssss</div>
+            </navbar>
 
             <timeitem t="1699" title="倒计时结束："></timeitem>
 
@@ -157,7 +159,8 @@
                 y: '',
                 left: '',
                 top: '',
-                list: ['我是1', '我是2'] //ActionSheet列表
+                list: ['我是1', '我是2'], //ActionSheet列表
+                navbar_menu: ['未使用', '已使用', '已过期'], //navbar 目录
             },
             methods: {
                 clickActionSheet: function() {
