@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-<!--     <meta name="viewport" content="target-densitydpi=device-dpi, width=375px, user-scalable=no"> -->
+    <!--     <meta name="viewport" content="target-densitydpi=device-dpi, width=375px, user-scalable=no"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GXC</title>
     <script src='vue.js'></script>
@@ -207,10 +207,10 @@
                         title: '警告',
                         value: '你太帅了',
                         btn: ['确定', '取消'],
-                        ok: function(index) {
+                        okcallback: function(index) {
                             console.log(index);
                         },
-                        cancel: function(index) {
+                        cancelcallback: function(index) {
                             console.log(index);
                         }
                     });
@@ -242,16 +242,15 @@
                 TopRight: function() {
                     alert("right");
                 },
-                loading:function(){
+                loading: function() {
                     setTimeout(() => {
-                        this.$refs.infinite.infinite_reset();                           
+                        this.$refs.infinite.infinite_reset();
                     }, 2000);
                 }
 
 
             },
-            mounted: function() {
-            }
+            mounted: function() {}
         })
     </script>
 </body>
