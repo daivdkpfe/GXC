@@ -24,6 +24,7 @@
     line-height: 44px;
     text-align: center;
     font-size: 14px;
+    height: 44px;
     color: #454545;
 }
 .Navbar .selected{
@@ -41,6 +42,7 @@
     width:100%;
     float:left;
 }
+
 </style>
 <script>
 export default {
